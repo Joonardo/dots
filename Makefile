@@ -4,7 +4,7 @@ STOWDIRS = $(wildcard stow-*)
 STOWDIRS_CLEAN = $(addprefix clean-, $(STOWDIRS))
 STOWDIRS_ADOPT = $(addprefix adopt-, $(STOWDIRS))
 
-.PHONY: all clean $(STOWDIRS) $(STOWDIRS_CLEAN)
+.PHONY: all clean $(STOWDIRS) $(STOWDIRS_CLEAN) $(STOWDIRS_ADOPT)
 
 all: $(STOWDIRS)
 
