@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# low battery warning
+#
+
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+PERCENT=$(acpi -b | awk '{ printf $4 }' | tr -dc '0-9')
+STATUS=$(acpi -b | awk '{ printf $3 }')
+
+if [ "$STATUS" = "Discharging," ] || [ "$STATUS" = "Unknown," ] && [ $PERCENT -le "15" ]; then
+	TIME=$(acpi -b | awk '{ printf $5 }')
+  if [ "$TIME" = "discharging" ] || [ "$TIME" = "" ]; then
+	  notify-send -u critical -t 300000 -i /usr/share/acpi/battery-low.png  "Battery almost empty. Charge now!"
+  else
+	  notify-send -u critical -t 300000 -i /usr/share/acpi/battery-low.png  "Battery is running low. Time left $TIME."
+  fi
+fi

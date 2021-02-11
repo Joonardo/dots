@@ -1,0 +1,15 @@
+text-color=#fbf1c7
+background-color=#282828
+border-color=#ebdbb2
+border-size=5
+padding=5
+max-visible=5
+default-timeout=3000
+anchor=top-right
+
+[urgency=high]
+default-timeout=0
+border-size=10
+background-color=#cc241d
+text-color=#282828
+border-color=#282828

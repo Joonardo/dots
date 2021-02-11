@@ -1,0 +1,3 @@
+#!/bin/sh
+
+dmenu_path | fzf --layout=reverse | xargs swaymsg exec

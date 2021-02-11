@@ -1,0 +1,71 @@
+call plug#begin(stdpath('data') . '/plugged')
+
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+Plug 'jparise/vim-graphql'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components'
+
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'equalsraf/neovim-gui-shim'
+
+call plug#end()
+
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-prettier',
+  \ 'coc-eslint',
+  \ 'coc-styled-components',
+  \ 'coc-json'
+  \ ]
+
+
+set nu
+set rnu
+
+set hlsearch
+set incsearch
+set ignorecase
+
+set expandtab
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+
+let mapleader = " "
+
+" autocmd vimenter * NERDTree
+map <Leader>t :NERDTreeToggle<CR>
+
+nnoremap <silent> <Leader>fp :GFiles<CR>
+nnoremap <silent> <Leader>ff :Rg<CR>
+nnoremap <silent> <Leader>bp :Buffers<CR>
+nnoremap <silent> <Leader>bb :buffer #<CR>
+nnoremap <silent> <Leader>bd :bd<CR>
+map <Leader>fw :w<CR>
+map <Leader>fq :wq<CR>
+
+nnoremap <silent> <Leader>ws :split<CR>
+nnoremap <silent> <Leader>wv :vsplit<CR>
+nnoremap <silent> <Leader>w <C-w>
+
+map <Leader>Q :qall<CR>
+
+nmap <Leader>di <Plug>(coc-format)
+nmap <leader>do <Plug>(coc-codeaction)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+colorscheme gruvbox

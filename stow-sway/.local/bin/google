@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo | fzf --margin=30% --print-query --layout=reverse --bind 'change:reload:search_google {q}' | tail -n1 | xargs -I"{}" swaymsg exec firefox "https://google.com/search?q={}"
+swaymsg workspace 1

@@ -1,0 +1,107 @@
+{
+	"layer": "top",
+  "margin-bottom": -10,
+  "margin-top": 0,
+  "margin-left": 20,
+  "margin-right": 20,
+	"modules-left": ["sway/workspaces", "sway/window"],
+  "modules-right": ["pulseaudio", "disk", "memory", "cpu", "battery", "network", "custom/weather", "clock"],
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{icon}",
+    "format-icons": {
+      "1": "I",
+      "2": "II",
+      "3": "III",
+      "4": "IV",
+      "5": "V",
+      "6": "VI",
+      "7": "VII",
+      "8": "VIII",
+      "9": "IX",
+    },
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+    }
+	},
+  "sway/window": {
+    "format": "{}",
+    "max-length": 50
+  },
+  "pulseaudio": {
+    "scroll-step": 5, // %, can be a float
+    "format": "{icon} {format_source}",
+    "format-bluetooth": "{icon} {format_source}",
+    "format-bluetooth-muted": "{icon} {format_source}",
+    "format-muted": "{icon} {format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "default": [" [█---------]"," [██--------]"," [███-------]"," [████------]"," [█████-----]"," [██████----]"," [███████---]"," [████████--]"," [█████████-]"," [██████████]",],
+    },
+    "on-click": "pavucontrol",
+    "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
+    "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob",
+    "on-click-middle": "pamixer --toggle-mute && pamixer --get-volume > $SWAYSOCK.wob",
+    "on-click-right": "pamixer --default-source --toggle-mute && pamixer --get-volume > $SWAYSOCK.wob",
+  },
+  "disk": {
+    "format": "{percentage_used}% 💽"
+  },
+  "memory": {
+    "format": "{percentage}%  "
+  },
+  "cpu": {
+    "format": "{usage}% ⏲️",
+    "on-click-middle": "termite -e 'gotop -b'",
+  },
+  "temperature": {
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C 🌡️",
+    "interval": 60,
+  },
+  "backlight": {
+    "interval": 5,
+    "format": "{icon}",
+    "format-alt": "{percent}% {icon}",
+    "format-alt-click": "click-right",
+    "format-icons": ["🌕", "🌔", "🌓", "🌒", "🌑"],
+    "on-scroll-down": "xbacklight -dec 5",
+    "on-scroll-up": "xbacklight -inc 5"
+  },
+  "battery": {
+    "interval": 5,
+    "bat": "BAT1",
+    "tooltip": "{timeTo} {time}",
+    "format": "{capacity}% 🔋",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+  },
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "tooltip-format": "{ifname} ({signalStrength}%): {ipaddr}/{cidr}",
+    "interval": 60,
+    "on-click-middle": "termite -e nmtui",
+  },
+  "custom/weather": {
+    "exec": "curl 'https://wttr.in/Espoo?format=1'",
+    "interval": 3600
+  },
+  "clock": {
+    "format": "{:%d.%m %H:%M}",
+  }
+}
