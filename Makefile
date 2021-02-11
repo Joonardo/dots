@@ -1,4 +1,4 @@
-STOW=stow -v --target=$(HOME)
+STOW = stow -v --target=$(HOME)
 
 STOWDIRS = $(wildcard stow-*)
 STOWDIRS_CLEAN = $(addprefix clean-, $(STOWDIRS))
